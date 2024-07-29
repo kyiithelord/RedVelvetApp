@@ -13,7 +13,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-        return $items;
+        return view('item.index',compact('items'));
     }
 
     /**
@@ -72,6 +72,10 @@ class ItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item=Item::find($id);
+        if($item){
+            $item->delete();
+            return back();
+        }
     }
 }
