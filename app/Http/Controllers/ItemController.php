@@ -40,7 +40,7 @@ class ItemController extends Controller
         $item -> description = $request->description;
         $item->save();
         // return redirect()->back();
-        return back();
+        return redirect()->route('item.index');
     }
 
     /**
@@ -56,7 +56,9 @@ class ItemController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Item::find($id);
+        return view('item.edit',compact('item'));
+
     }
 
     /**
@@ -64,7 +66,14 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Item::find($id);
+        $item -> name = $request->name ;
+        $item -> price = $request->price ;
+        $item -> stock = $request->stock;
+        $item -> description = $request->description;
+        $item->update();
+        return redirect()->route('item.index');
+
     }
 
     /**
