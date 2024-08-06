@@ -7,8 +7,8 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
     <title>Document</title>
 </head>
-<body>
-        <div class="container max-w-3xl mx-auto p-3 mt-4">
+<body class="py-12">
+        <div class="container max-w-3xl shadow-lg mx-auto p-3 mt-4">
 
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -27,7 +27,12 @@
                 <th scope="col" class="px-6 py-3">
                     Stock
                 </th>
-
+                <th scope="col" class="px-6 py-3">
+                    Category
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
                 <th scope="col" class="px-6 py-3">
                     Action
                 </th>
@@ -48,8 +53,14 @@
                 <td class="px-6 py-4">
                     {{$item->stock}}
                 </td>
-
                 <td class="px-6 py-4">
+                    {{$item->category_id}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$item->status}}
+                </td>
+
+                <td class="px-2 py-2">
                     <a href="{{route('item.edit',$item->id)}}" type="button" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Edit</a>
                     <form class="inline-block" action="{{route('item.destroy',$item->id)}}" method="POST">
                         @csrf
