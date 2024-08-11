@@ -16,12 +16,18 @@
                 @method('put')
                 <div class="mb-2">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input type="text" id="name" name="name" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full" value="{{$category->name}}">
+                    <input type="text" id="name" name="name" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('name') border-red-600 @enderror " value="{{old('name',$category->name)}}">
+                    @error('name')
+                        <p class="text-red-600">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="mb-2">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                    <input type="text" id="description" name="description" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full" value="{{$category->description}}">
+                    <input type="text" id="description" name="description" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('description') border-red-600 @enderror " value="{{old('description',$category->description)}}">
+                    @error('description')
+                        <p class="text-red-600">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <button type="submit" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Update</button>

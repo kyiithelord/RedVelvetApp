@@ -36,7 +36,7 @@
                     {{$mobile->mobile_number}}
                 </th>
                 <td class="px-6 py-4">
-                    {{$mobile->student_id}}
+                    {{$mobile->student->name}}
                 </td>
             </tr>
             @endforeach

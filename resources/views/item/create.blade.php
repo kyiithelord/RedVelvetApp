@@ -15,22 +15,34 @@
                 @csrf
                 <div class="mb-2">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input type="text" id="name" name="name" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full">
+                    <input type="text" id="name" name="name" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('name') border-red-600 @enderror " value="{{old('name')}}">
+                    @error('name')
+                        <p class="text-red-600"> {{$message}} </p>
+                    @enderror
                 </div>
 
                 <div class="mb-2">
                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                    <input type="text" id="price" name="price" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full">
+                    <input type="text" id="price" name="price" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('price') border-red-600 @enderror " value="{{old('price')}}">
+                    @error('price')
+                        <p class="text-red-600"> {{$message}} </p>
+                    @enderror
                 </div>
 
                 <div class="mb-2">
                     <label for="stock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
-                    <input type="text" id="stock" name="stock" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full">
+                    <input type="text" id="stock" name="stock" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('stock') border-red-600 @enderror " value="{{old('stock')}}">
+                    @error('stock')
+                        <p class="text-red-600"> {{$message}} </p>
+                    @enderror
                 </div>
 
                 <div class="mb-2">
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                    <input type="text" id="description" name="description" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full">
+                    <input type="text" id="description" name="description" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('description') border-red-600 @enderror " value="{{old('description')}}">
+                    @error('description')
+                        <p class="text-red-600"> {{$message}} </p>
+                    @enderror
                 </div>
 
                 <div class="mb-2">
