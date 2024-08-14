@@ -27,3 +27,4 @@ Route::resource('/person',PeopleController::class);
 Route::resource('/phone',PhoneController::class);
 Route::resource('/student',StudentController::class);
 Route::resource('/mmobile',MobileController::class);
+Route::get('/search',[ItemController::class,'search'])->name('item.search');

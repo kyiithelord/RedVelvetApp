@@ -12,6 +12,13 @@
 
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <form action="{{route('item.search')}}" method="GET" >
+        <div class="mb-4">
+            <input type="text" id="name" name="query" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg" placeholder="Search...">
+            <button type="submit" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Search</button>
+            <a href="{{route('item.index')}}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">View All</a>
+        </div>
+    </form>
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -60,7 +67,7 @@
                     {{$item->category -> name}}
                 </td>
                 <td class="px-1 py-1">
-                    <a href="{{route('item.show',$item->id)}}" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Details</a>
+                    <a href="{{route('item.show',$item->id)}}" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Details</autton>
                 </td>
 
                 <td class="px-6 py-4">

@@ -10,6 +10,15 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+    public function search(Request $request)
+    {
+        $query = $request->input("query");
+        $items = Item::where('name',"LIKE","%{$query}%")
+                 ->orWhere('status',"LIKE","%{$query}%")
+                 ->paginate(5);
+        return view('item.index',compact('items'));
+    }
+
     /**
      * Display a listing of the resource.
      */
