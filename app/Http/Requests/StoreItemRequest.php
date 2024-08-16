@@ -26,6 +26,7 @@ class StoreItemRequest extends FormRequest
                 'price' => 'required',
                 'stock' => 'required',
                 'description' => 'required',
+                'image' => 'required'
         ];
     }
     public function messages()
@@ -34,8 +35,8 @@ class StoreItemRequest extends FormRequest
            'name.required' => 'You have to add name!',
            'price.required' => 'You have to add price!',
            'stock.required' => 'You have to add stock',
-           'description.required' => 'You have to add description'
-
+           'description.required' => 'You have to add description',
+           'image.required' => 'You have to add image'
         ];
 
     }

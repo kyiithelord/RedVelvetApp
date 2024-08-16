@@ -44,6 +44,9 @@
                     Status
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Image
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Action
                 </th>
             </tr>
@@ -72,6 +75,9 @@
 
                 <td class="px-6 py-4">
                     {{$item->status}}
+                </td>
+                <td class="px-6 py-4">
+                    <img src="{{asset('storage/itemImage/'.$item->image)}}" width="100px" height="80px">
                 </td>
 
                 <td class="px-2 py-2 flex">
