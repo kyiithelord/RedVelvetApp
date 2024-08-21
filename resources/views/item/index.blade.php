@@ -77,7 +77,9 @@
                     {{$item->status}}
                 </td>
                 <td class="px-6 py-4">
-                    <img src="{{asset('storage/itemImage/'.$item->image)}}" width="100px" height="80px">
+                    @foreach ($item->item_images as $image )
+                       <img src="{{asset('storage/itemImage/'.$image)}}" width="80px" height="80px">
+                    @endforeach
                 </td>
 
                 <td class="px-2 py-2 flex">
@@ -94,7 +96,7 @@
         </tbody>
     </table>
     <div class="px-6 py-6">
-         {{$items -> links('pagination::tailwind')}}
+         {{-- {{$items -> links('pagination::tailwind')}} --}}
     </div>
 </div>
 

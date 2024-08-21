@@ -57,9 +57,13 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="{{asset('storage/itemImage/'.$item->image)}}" width="100px" height="80px">
+                    <div class="flex">
+                        @foreach ($item->item_images as $image )
+                            <img  src="{{asset('storage/itemImage/'.$image)}}" width="100px" height="80px">
+                        @endforeach
+                    </div>
                     <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                    <input type="file" id="image" name="image" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('name') border-red-600 @enderror " value="{{old('name')}}">
+                    <input type="file" id="image" name="image[]" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('name') border-red-600 @enderror " multiple>
                     @error('name')
                         <p class="text-red-600"> {{$message}} </p>
                     @enderror

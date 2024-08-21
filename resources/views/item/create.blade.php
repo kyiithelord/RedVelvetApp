@@ -11,7 +11,7 @@
 
     <div class="container mx-auto mt-10">
         <div class="w-full max-w-md mx-auto bg-white shadow-lg rounded-lg p-e">
-            <form action="{{route('item.store')}}" method="post" class="grid gap-4 mb-6" enctype="multipart/form-data" >
+            <form action="{{route('item.store')}}" method="POST" class="grid gap-4 mb-6" enctype="multipart/form-data" >
                 @csrf
                 <div class="mb-2">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white " >Name</label>
@@ -58,7 +58,7 @@
 
                 <div class="mb-2">
                     <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                    <input type="file" id="image" name="image" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('name') border-red-600 @enderror " value="{{old('name')}}">
+                    <input type="file" id="image" name="image[]" class="bg-gray-200 border border-gray-600 text-gray-950 text-sm rounded-lg w-full @error('name') border-red-600 @enderror " multiple >
                     @error('name')
                         <p class="text-red-600"> {{$message}} </p>
                     @enderror

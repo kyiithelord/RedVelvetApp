@@ -24,7 +24,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::paginate(5);
+        $items = Item::all();
+        foreach($items as $item){
+            $item->item_images = json_decode($item->item_images,true);
+        }
         return view('item.index',compact('items'));
     }
 
@@ -43,13 +46,24 @@ class ItemController extends Controller
     public function store(StoreItemRequest $request)
     {
         // dd($request->price);
-
         // return $request->image;
+    //    single file upload ===>
+        // if($request->image){
+        //     $file = $request->image;
+        //     $newName = "item_name".uniqid().".".$file->extension();
+        //     // return $newName;
+        //     $file->storeAs('public/itemImage',$newName);
+        // }
+
+        // multile file upload
+
+        $image = [];
         if($request->image){
-            $file = $request->image;
-            $newName = "item_name".uniqid().".".$file->extension();
-            // return $newName;
-            $file->storeAs('public/itemImage',$newName);
+            foreach($request->file('image') as $file){
+                $newName = "item_image".uniqid().".".$file->extension();
+                $fileName = $file->storeAs('public/itemImage',$newName);
+                $image[] =$fileName;
+            }
         }
 
         $item = new Item();
@@ -59,7 +73,7 @@ class ItemController extends Controller
         $item -> description = $request->description;
         $item -> status = $request->status;
         $item -> category_id = $request->category_id;
-        $item -> image = $newName;
+        $item -> item_images = json_encode($image);
         $item->save();
         // return redirect()->back();
         return redirect()->route('item.index');
@@ -81,6 +95,7 @@ class ItemController extends Controller
     {
         $categories = Category::all();
         $item = Item::find($id);
+        $item->item_images = json_decode($item->item_images,true);
         return view('item.edit',compact('item','categories'));
 
     }
@@ -98,11 +113,20 @@ class ItemController extends Controller
         $item -> description = $request->description;
         $item -> status = $request->status;
         $item -> category_id = $request->category_id;
+        // if($request->image){
+        //     $file = $request->image;
+        //     $newName = 'item_image'.uniqid().".".$file->extension();
+        //     $file->storeAs('public/itemImage',$newName);
+        //     $item -> image = $newName;
+        // }
+        $image = [];
         if($request->image){
-            $file = $request->image;
-            $newName = 'item_image'.uniqid().".".$file->extension();
-            $file->storeAs('public/itemImage',$newName);
-            $item -> image = $newName;
+            foreach($request->file('image') as $file){
+                $newName = "item_image".uniqid().".".$file->extension();
+                $fileName = $file->storeAs('public/itemImage',$newName);
+                $image[] =$fileName;
+            }
+            $item -> item_images = json_encode($image);
         }
         $item->update();
         return redirect()->route('item.index');
