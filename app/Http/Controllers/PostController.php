@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -23,7 +24,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('post.create',compact('users'));
     }
 
     /**
@@ -31,7 +33,10 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        return $request;
+        $post = new Post();
+        $post->title = $request->title;
+        $post->save();
     }
 
     /**
