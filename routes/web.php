@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MobileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PhoneController;
@@ -28,3 +30,6 @@ Route::resource('/phone',PhoneController::class);
 Route::resource('/student',StudentController::class);
 Route::resource('/mmobile',MobileController::class);
 Route::get('/search',[ItemController::class,'search'])->name('item.search');
+Route::resource('user',UserController::class);
+Route::resource('post',PostController::class);
+
