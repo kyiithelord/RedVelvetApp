@@ -13,12 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::find(3);
-        $posts = $user->posts;
-        foreach($posts as $post){
-            echo $post->title.'<br>';
-            echo $post->user_id.'<br>';
-        }
+        $user = User::find(4);
+        return $user->posts()->get();
+
 
     }
 
@@ -39,6 +36,8 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->save();
+        $user->posts()->attach($request->post_ids);
+        return back();
     }
 
     /**

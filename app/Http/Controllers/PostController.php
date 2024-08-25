@@ -14,9 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::find(3);
-        $user = $post->user;
-        echo $user->name;
+        $post = Post::find(6);
+        return $post -> users()->get();
     }
 
     /**
@@ -33,10 +32,11 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        return $request;
         $post = new Post();
         $post->title = $request->title;
         $post->save();
+        $post->users()->attach($request->user_ids);
+        return back();
     }
 
     /**
