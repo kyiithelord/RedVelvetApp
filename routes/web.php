@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MobileController;
@@ -32,4 +33,5 @@ Route::resource('/mmobile',MobileController::class);
 Route::get('/search',[ItemController::class,'search'])->name('item.search');
 Route::resource('user',UserController::class);
 Route::resource('post',PostController::class);
+Route::resource('country',CountryController::class);
 
