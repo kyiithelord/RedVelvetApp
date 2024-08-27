@@ -14,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::find(6);
-        return $post -> users()->get();
+        $post = Post::find(1);
+        return $post -> user()->get();
     }
 
     /**

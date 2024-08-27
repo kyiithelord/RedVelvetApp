@@ -13,9 +13,9 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $country = Country::find(4);
+        $country = Country::find(2);
         // $country = $country->post()->get();
-        $post = $country->post;
+        $post = $country->posts;
         return $post;
     }
 

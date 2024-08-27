@@ -13,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::find(1);
-        return $user->post()->get();
+        $user = User::find(2);
+        return $user->posts()->get();
 
 
     }
