@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Country extends Model
 {
     use HasFactory;
-
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
+    }
+    public function post(){
+        return $this->hasOneThrough(Post::class,User::class);
     }
 }
