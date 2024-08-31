@@ -24,14 +24,14 @@ Route::get('/', function () {
 //     return view('item.create');
 // });
 
-Route::resource('/item', ItemController::class);
+// Route::resource('/item', ItemController::class);
 Route::resource('/category', CategoryController::class);
-Route::resource('/person',PeopleController::class);
-Route::resource('/phone',PhoneController::class);
-Route::resource('/student',StudentController::class);
-Route::resource('/mmobile',MobileController::class);
-Route::get('/search',[ItemController::class,'search'])->name('item.search');
-Route::resource('user',UserController::class);
-Route::resource('post',PostController::class);
-Route::resource('country',CountryController::class);
+// Route::resource('/person',PeopleController::class);
+// Route::resource('/phone',PhoneController::class);
+// Route::resource('/student',StudentController::class);
+// Route::resource('/mmobile',MobileController::class);
+// Route::get('/search',[ItemController::class,'search'])->name('item.search');
+// Route::resource('user',UserController::class);
+// Route::resource('post',PostController::class);
+// Route::resource('country',CountryController::class);
 
