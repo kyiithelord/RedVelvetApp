@@ -63,7 +63,13 @@ class CategoryApiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->update();
+        return response()->json([
+            'message' => 'Category is update successfully.'
+        ]);
     }
 
     /**

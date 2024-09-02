@@ -15,3 +15,4 @@ Route::get('/user', function (Request $request) {
 Route::get('/category',[CategoryApiController::class,'index']);
 Route::post('/category',[CategoryApiController::class,'store']);
 Route::delete('/category/{id}',[CategoryApiController::class,'destroy']);
+Route::put('/category/{id}',[CategoryApiController::class,'update']);
