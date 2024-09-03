@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('stock');
-            $table->json('item_images');
+            $table->json('item_images')->nullable();
             $table->text('description');
             $table->enum('status',['available','unavailable']);
             $table->unsignedBigInteger('category_id');

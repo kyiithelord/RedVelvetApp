@@ -25,7 +25,7 @@ Route::get('/', function () {
 // });
 
 // Route::resource('/item', ItemController::class);
-Route::resource('/category', CategoryController::class);
+// Route::resource('/category', CategoryController::class);
 // Route::resource('/person',PeopleController::class);
 // Route::resource('/phone',PhoneController::class);
 // Route::resource('/student',StudentController::class);
