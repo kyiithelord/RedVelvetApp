@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ItemApiController extends Controller
 {
@@ -76,14 +77,23 @@ class ItemApiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $item = item::find($id);
+        $item = Item::find($id);
         $item -> name = $request -> name;
         $item -> price = $request -> price;
         $item -> stock = $request -> stock;
         $item -> description = $request -> description;
         $item -> status = $request -> status;
         $item -> category_id = $request -> category_id;
-        $item -> save();
+        $image = [];
+        if($request->image){
+            foreach($request->file('image') as $file){
+                $newName = 'item_image'.uniqid().'.'.$file->extension();
+                $file->storeAs('public/itemImage',$newName);
+                $image[] = $newName;
+            }
+            $item->item_images = json_encode($image);
+        };
+        $item -> update();
          return response()->json([
                 'message' => 'Item update successfully.'
         ]);
@@ -96,7 +106,14 @@ class ItemApiController extends Controller
     public function destroy(string $id)
     {
         $item = Item::find($id);
-        if($id){
+        if($item){
+            $images = json_decode($item->item_images);
+            if($images){
+                foreach($images as $image){
+                    // Storage::delete('public/itemImage/'.$imag);
+                    Storage::delete('public/itemImage/'.$image);;
+                }
+            }
             $item->delete();
         };
         return response()->json([
