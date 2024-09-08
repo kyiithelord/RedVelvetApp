@@ -1,37 +1,20 @@
 <?php
 
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\MobileController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\PhoneController;
-use App\Http\Controllers\PeopleController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/test', function () {
-//     return view('test');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-// Route::get('/item', function () {
-//     return view('item.create');
-// });
-
-// Route::resource('/item', ItemController::class);
-// Route::resource('/category', CategoryController::class);
-// Route::resource('/person',PeopleController::class);
-// Route::resource('/phone',PhoneController::class);
-// Route::resource('/student',StudentController::class);
-// Route::resource('/mmobile',MobileController::class);
-// Route::get('/search',[ItemController::class,'search'])->name('item.search');
-// Route::resource('user',UserController::class);
-// Route::resource('post',PostController::class);
-// Route::resource('country',CountryController::class);
-
+require __DIR__.'/auth.php';

@@ -45,7 +45,7 @@ class User extends Authenticatable
         ];
     }
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
     // public function post(){
     //     return $this->hasOne(Post::class);
     // }
@@ -58,11 +58,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-=======
+// =======
     public function post(){
         return $this->hasOne(Post::class);
     }
->>>>>>> 93e2582c6c393d92a42c953dc2209b8320f26cba
+// >>>>>>> 93e2582c6c393d92a42c953dc2209b8320f26cba
     public function country(){
         return $this->belongsTo(Country::class);
     }
