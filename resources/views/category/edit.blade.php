@@ -11,6 +11,7 @@
 
     <div class="container mx-auto mt-10">
         <div class="w-full max-w-md mx-auto bg-white shadow-lg rounded-lg p-e">
+            {{$fruit}}
             <form action="{{route('category.update',$category->id)}}" method="POST" class="grid gap-4 mb-6" >
                 @csrf
                 @method('put')

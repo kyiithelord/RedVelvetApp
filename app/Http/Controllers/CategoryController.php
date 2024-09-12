@@ -5,14 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use Illuminate\Support\Facades\View;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        View::share('fruit','Orange');
+    }
+
+
     public function index()
     {
+        // View::share('fruit','Apple');
         $categories = Category::all();
         return view('category.index',compact('categories'));
     }
@@ -22,6 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        // View::share('fruit','Orange');
         return view('category.create');
     }
 
@@ -55,6 +64,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        // View::share('fruit','Banana');
         return view('category.edit',compact('category'));
     }
 
