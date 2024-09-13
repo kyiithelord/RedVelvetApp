@@ -10,25 +10,26 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function search(Request $request)
-    {
-        $query = $request->input("query");
-        $items = Item::where('name',"LIKE","%{$query}%")
-                 ->orWhere('status',"LIKE","%{$query}%")
-                 ->paginate(5);
-        return view('item.index',compact('items'));
-    }
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input("query");
+    //     $items = Item::where('name',"LIKE","%{$query}%")
+    //              ->orWhere('status',"LIKE","%{$query}%")
+    //              ->paginate(5);
+    //     return view('item.index',compact('items'));
+    // }
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $appName = config('app.appName');
         $items = Item::all();
         foreach($items as $item){
             $item->item_images = json_decode($item->item_images,true);
         }
-        return view('item.index',compact('items'));
+        return view('item.index',compact('items','appName'));
     }
 
     /**

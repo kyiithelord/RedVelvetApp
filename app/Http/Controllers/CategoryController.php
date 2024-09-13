@@ -20,9 +20,12 @@ class CategoryController extends Controller
 
     public function index()
     {
+        // $timeZone = config('timezone');
+        // return $timeZone;
         // View::share('fruit','Apple');
+        $appName = config('app.appName');
         $categories = Category::all();
-        return view('category.index',compact('categories'));
+        return view('category.index',compact('categories','appName'));
     }
 
     /**
